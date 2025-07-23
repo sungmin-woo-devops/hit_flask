@@ -5,6 +5,5 @@ params = {
     '_type': 'json'
 }
 response = requests.get(url, params=params)
-# content(바이트) → decode("utf-8")로 한글 변환
 decoded = response.content.decode("utf-8")
 print(decoded)

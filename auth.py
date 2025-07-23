@@ -1,6 +1,5 @@
-from flask import Blueprint, render_template,request, flash, redirect, url_for, session
+from flask import Blueprint, render_template, request, redirect, url_for, session, flash
 from werkzeug.security import check_password_hash, generate_password_hash
-from auth import auth
 import pymysql
 from functools import wraps
 
@@ -10,7 +9,7 @@ DB_CONFIG = {
     'host': 'localhost',
     'user': 'root',
     'password': 'example',
-    'database': "auth_db",
+    'database': "mariadb",
     "port": 3306,
     "charset": "utf8mb4"
 }

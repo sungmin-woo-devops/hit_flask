@@ -1,18 +1,18 @@
-from flask import Flask, render_template, request, flask, redirect, url_for, session
+import os
+from flask import Flask, render_template, request, redirect, url_for, session
+from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import check_password_hash, generate_password_hash
 from functools import wraps
 from map import create_map
-import os
+from views import views
+from auth import auth
 
-
-def create_app(**kwargs):
-    """Creates a new Flask app using the Factory Pattern"""
+def create_app():
     app = Flask(__name__)
-    app.config.update(kwargs)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://root:example@localhost:5432/postgres'
+
+    db = SQLAlchemy(app)
     
-    # 메인 페이지 라우트 추가
-    from views import views
-    from auth import auth
     app.register_blueprint(views, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/")
 
