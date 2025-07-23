@@ -1,0 +1,13 @@
+*env
+venv
+.venv
+.talkshow
+.secrets.toml
+*.egg-info
+database
+.pytest_cache
+__pycache__
+.coverage
+build
+dist
+.idea
